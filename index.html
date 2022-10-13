@@ -1,45 +1,96 @@
-<?php include 'sentMail.php';?>
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #canvas{
+            
+        }
+        #total{
+            font-size: 40px;
+            position:fixed;
+            bottom:10px;
+            margin:0 auto;
+            width:100%;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        @media screen and (max-width: 390px) {
+            #canvas {
+                width:390px;
+                height:700px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">  
-    <form id="contact" action="" method="post">
-      <h3>Quick Contact</h3>
-      <h4>Contact us today, and get reply with in 24 hours!</h4>
- 
-      <fieldset>
-        <input placeholder="Your name" name="name" type="text" tabindex="1" autofocus>
-      </fieldset>
-      <fieldset>
-        <input placeholder="Your Email Address" name="email" type="email" tabindex="2">
-      </fieldset>
-      <fieldset>
-        <input placeholder="Your Phone Number" name="tel" type="tel" tabindex="3" >
-      </fieldset>
-      <fieldset>
-        <input placeholder="Type your subject line" type="text" name="subject" tabindex="4">
-      </fieldset>
-      <fieldset>
-        <textarea name="message" placeholder="Type your Message Details Here..." tabindex="5"></textarea>
-      </fieldset>
-      <div>
-         <p class="success"> <?php echo $success;  ?></p>
-         <p class="failed"> <?php echo $failed;  ?></p>
-      </div>
-      <fieldset>
-        <button type="submit" name="submit" id="contact-submit" data-submit="...Sending">Submit Now</button>
-      </fieldset>
-    </form>
-    
-     
-  </div>
+    <div class="contain">
+        <canvas id="canvas" width="900" height="500">
+        </canvas>
+        <p id="total">0 Total</p>
+    </div>
+    <script>
+       let total=document.getElementById("total");
+       let c=document.getElementById("canvas");
+       let ctx=c.getContext('2d');
+       let bg=new Image();
+       let bird=new Image();
+       let chimney1=new Image();
+       let chimney2=new Image();
+       let y=c.height/2;
+       bg.src="/img/flappy/bg.png";
+       bird.src="/img/flappy/bird.png";
+       chimney1.src="/img/flappy/chimney1.png";
+       chimney2.src="/img/flappy/chimney2.png";
+       let x=[c.width];
+       let height=[];
+       let score=0;
+       function show(){
+           y+=2;     
+          height.push(Math.floor(Math.random() * (c.height-200)) + 80); 
+          ctx.drawImage(bg,0,0,c.width,c.height);
+          ctx.drawImage(bird,c.width/5,y,30,30);
+          for(let i=0;i<x.length;i++){
+            ctx.drawImage(chimney1,x[i],0,30,height[i]);
+            ctx.drawImage(chimney2,x[i],height[i]+120,30,500-height[i]-120);
+            x[i]--;
+            if(x[i]==800){ 
+                x.push(c.width);
+            }
+            if(y<=30 ||y>=c.height-30){
+                let result='You lost, Your point is '+total.innerHTML;
+                alert(result);
+                y=c.width/2;
+                location.reload();
+            }
+            if ((c.width/5>=x[i]-15 && c.width/5<=x[i]+15) && (y<=height[i]||y+30>=height[i]+120)){
+                let result='You lost, Your point is '+total.innerHTML;
+                alert(result);
+                y=height[i]+1;
+                location.reload();
+            }
+            if(x[i]==c.width/5){
+                score+=10;
+                total.innerHTML=score;
+            }
+            
+          }
+       }
+       window.addEventListener("keydown",birdMove);
+       function birdMove(){
+            y=y-30;
+       }
+       let inter =setInterval(show,25);
+       window.addEventListener("touchstart",birdMove);
+    </script>
 </body>
-</html>s
+</html>
