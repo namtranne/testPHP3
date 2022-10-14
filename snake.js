@@ -27,7 +27,7 @@ class snake {
         else if (this.y<0) {
             this.y=145;
         }
-        ctx.fillStyle="white";
+        ctx.fillStyle="green";
         ctx.fillRect(this.x,this.y,10, 5);
     }
 }
