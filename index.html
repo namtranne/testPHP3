@@ -1,117 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-        body{
-            height:100vh;
-            display:flex;
-            flex-direction: column;
-            align-items:center;
-            background:rgb(243, 209, 141);
-        }
-        .game {
-            width:500px;
-            height:500px;
-            background:black;
-        }
-        .contain {
-            width:520px;
-            height:520px;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background:rgb(30, 88, 175);
-            position:absolute;
-            top: 50%;
-            left:50%;
-            transform:translate(-50%,-50%);
-        }
-    </style>
+  <title>Music</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/styleMusic.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald:400,700%7cPoppins:300,400,400i,600,600i,700,800,900">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
 </head>
-<body>
-    <h1>Snake game</h1>
-    <h2 class="score">Score:0</h2>
-    <div class="contain">
-        <canvas class="game"></canvas>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <header>
+    <div class="header">
+
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">
+          <img src="images/logo.png" height="80px">
+        </a>
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#product">Phieu Concert</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#singer">Singers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">Contact</a>
+            </li>    
+          </ul>
+          <button class="buy">Buy ticket</button>
+        </div>  
+      </nav>
+
+
     </div>
-    </canvas>
-    <script src="food.js"></script>
-    <script src="snake.js"></script>
-    <script>
-        
-        let score=document.querySelector(".score");
-        let canvas=document.querySelector(".game");
-        let ctx=canvas.getContext("2d");
-        ctx.fillStyle="white";
-        const test=new food();
-        test.show();
-        let total=1;
-        const tail=[];
-        const test2=new snake();
-        tail.push(test2);
-        console.log(tail.length);
-        setInterval(()=>{
-            
-            test.show();
-            if (tail.length<total) {
-                console.log(123);
-                tail.push(new snake());
-                console.log(tail.length);
-            }
-            for (let i=total-1;i>0;i--) {
-                let ctx=canvas.getContext("2d");
-                ctx.fillStyle="black";
-                ctx.fillRect(tail[i].x, tail[i].y,10,5);
-                tail[i].x=tail[i-1].x;
-                tail[i].y=tail[i-1].y;
-            }
-            tail[0].show();
-            for (let i=1;i<total;i++) {
-                if (tail[0].x==tail[i].x && tail[0].y==tail[i].y) {
-                    alert("You lost");
-                    location.reload();
-                }
-            }
-            for (let i=1;i<tail.length;i++) {
-                let ctx=canvas.getContext("2d");
-                ctx.fillStyle="green";
-                ctx.fillRect(tail[i].x, tail[i].y,10,5);
-            }
-            if (test2.x==test.x*10 && test2.y==test.y*5) {
-                test.update();
-                test.show();
-                total+=1;
-                score.innerHTML="Score: " + (total-1);
-            }
-            
-        },100)
-        document.onkeydown = function(e) {
-            e = e || window.event;
-            if (e.keyCode == '38') {
-                test2.speed(0,-1);
-            }
-            else if (e.keyCode == '40') {
-                // down arrow
-                test2.speed(0,1);
-            }
-            else if (e.keyCode == '37') {
-            // left arrow
-                test2.speed(-1,0);
-            }
-            else if (e.keyCode == '39') {
-            // right arrow
-            test2.speed(1,0);
-            }
-        };
-    </script>
+  </header>
+  <section>
+    <div id="banner">
+      <div class="contain">
+        <div class="time">
+          <p>00</p>
+          <p>Days</p>
+        </div>
+        <div class="time">
+          <p>00</p>
+          <p>Hour</p>
+        </div>
+        <div class="time">
+          <p>00</p>
+          <p>Minute</p>
+        </div>
+        <div class="time">
+          <p>00</p>
+          <p>Second</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class=" text-center container" id="about">
+      <h1 class="hello" data-aos="fade-up"  data-aos-anchor-placement="bottom-bottom">HẾ LÔ,</h1>
+      <p class="chaomung mb-3" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">Chào mừng tới với tụi tui.</p>
+      <p class="gioithieu" data-aos="fade-up">Phiêu là một concert được tổ chức tại TP.Hồ Chí Minh vào #muamuanay. Tụi tui muốn trở thành một cây kem âm nhạc mang nhiều mùi vị mà các bạn yêu thích. Tới chơi với tụi tui nha!</p>
+      <div class="show mb-5" data-aos="fade-up"  data-aos-anchor-placement="bottom-bottom">
+        <div class="left">
+          <h1><span>05</span></h1>
+        </div>
+        <div class="right">
+          <span>OCTOBER 2019</span><br>
+          <span>KĐT Sala, Mai Chí Thọ, Quận 2, TP.HCM</span>
+        </div>
+      </div>
+      <button class="buy"  data-aos="fade-up"  data-aos-anchor-placement="bottom-bottom">Buy ticket</button>
+    </div>
+  </section>
+  <section>
+  <div id="listSinger">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+     <div class="singer">
+       <h2 class="heading text-center">Who will come?</h2>
+     </div>
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="img">
+            <img src="images/namkun.png" alt="" width="100%">
+            <img src="images/jiinguyen.png" alt="" width="100%">
+            <img src="images/tientien.png" alt=""width="100%">
+          </div>
+        </div>
+        <div class="carousel-item">
+         <div class="img">
+            <img src="images/monocycle.png" alt="" width="100%">
+            <img src="images/klaf.png" alt="" width="100%">
+            <img src="images/osad.png" alt="" width="100%">
+          </div>
+        </div>
+        <div class="carousel-item">
+         <div class="img">
+            <img src="images/thinhsuy.png" alt="" width="100%">
+            <img src="images/namkun.png" alt=""width="100%">
+            <img src="images/tientien.png" alt="" width="100%">
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+  </div>
+  </div>
+  </section>
+  <section>
+    <div id="product">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-3 text-center dau " data-aos="fade-up"  >
+            <div class="innerDau">
+              <img src="images/daudo.png" width="100px">
+            <p class="name">Đậu Đỏ</p>
+            <p class="price">320k</p>
+             <button class="buy sold ">SOLD OUT</button>
+            </div>
+          </div>
+           <div class="col-sm-6 col-md-3 text-center dau" data-aos-delay="300"  data-aos="fade-up">
+            <div class="innerDau">
+            <img src="images/khoaimon.png" width="100px">
+            <p class="name">Khoai Môn</p>
+            <p class="price">320k</p>
+             <button class="buy sold ">SOLD OUT</button>
+           </div>
+          </div>
+           <div class="col-sm-6 col-md-3 text-center dau" data-aos-delay="600"  data-aos="fade-up">
+            <div class="innerDau">
+            <img src="images/bacha.png" width="100px">
+            <p class="name">Bạc Hà</p>
+            <p class="price">320k</p>
+             <button class="buy sold ">SOLD OUT</button>
+           </div>
+          </div>
+           <div class="col-sm-6 col-md-3 text-center dau" data-aos-delay="900"  data-aos="fade-up">
+            <div class="innerDau">
+            <img src="images/socola.png" width="100px">
+            <p class="name">Socola</p>
+            <p class="price">320k</p>
+             <button class="buy sold ">SOLD OUT</button>
+           </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-4 text-center dau" data-aos-delay="0"  data-aos="fade-up">
+            <div class="innerDau">
+            <img src="images/phanquang.png" width="100px">
+            <p class="name">ÁO THUN PHẢN QUANG</p>
+             <button class="buy sold ">Buy Now</button>
+           </div>
+          </div>
+           <div class="col-sm-6 col-md-4 text-center dau" data-aos-delay="300"  data-aos="fade-up">
+            <div class="innerDau">
+            <img src="images/hologram.png" width="100px">
+            <p class="name">BÌNH NƯỚC HOLOGRAM</p>
+             <button class="buy sold ">Buy Now</button>
+           </div>
+          </div>
+           <div class="col-sm-6 col-md-4 text-center dau" data-aos-delay="600"  data-aos="fade-up">
+            <div class="innerDau">
+            <img src="images/combo.png" width="100px">
+            <p class="name">COMBO ẤN PHẨM</p>
+             <button class="buy sold ">Buy Now</button>
+           </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer" id="singer">
+      <div class="footer-inner">
+        <div class="container py-5">
+          <div class="row">
+                <div class="col-sm-4 box">
+                  <img src="images/logo.png" width="100%">
+                </div>
+                 <div class="col-sm-4 box">
+                  <h1 class="title mb-3">PHIÊU CONCERT</h1>
+                  <p class="time">05 OCTOBER, 2019</p>
+                  <address class="address">Sala City, 10 Mai Chi Tho, Thu Thiem New Urban Area, District 2, HCMC</address>
+                </div>
+                <div class="col-sm-4 box">
+                     <h1 class="title mb-3"> SOCIAL CONNECTION</h1>
+                     <p class="address">You should connect social area</p>
+                     <p class="address">for Any update</p>
+                     <div class="icon">
+                      <a href="#"> <i class="fa fa-facebook"></i></a>
+                      <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                  </div>
+       
+            </div>
+             <div class="last">
+         <p>© Second covid-19 year - Tan Nguyen</p>
+       </div>
+     </div>
+   </div>
+ </div>
+</footer>
+
+<script>
+  AOS.init();
+</script>
+
 </body>
 </html>
+
+
