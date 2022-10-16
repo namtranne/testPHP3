@@ -414,3 +414,6 @@ footer .last p {
 header .nav-link:hover{
     color:#554bb9  !important;
 }
+main .text-container .right{
+    text-align: left;
+}
