@@ -194,7 +194,7 @@ main .slider .heading{
     color: #fff;
 }
 main .slider .slide img{
-    width: calc((100% - 100px)/ 3);
+    width: calc((100% - 20px)/ 3);
 }
 main .slider {
     position: relative;
@@ -368,12 +368,12 @@ footer .last p {
 }
 @media screen and (max-width:680px){
     main .banner .time p:nth-child(1) {
-        font-size:80px;
+        font-size:100px;
     }
 }
 @media screen and (max-width:520px){
     main .banner .time p:nth-child(1) {
-        font-size:60px;
+        font-size:80px;
     }
     main .slider .heading{
         font-size:30px;
@@ -381,7 +381,7 @@ footer .last p {
 }
 @media screen and (max-width:430px){
     main .banner .time p:nth-child(1) {
-        font-size:40px;
+        font-size:70px;
     }
     main .banner .time p:nth-child(2) {
         font-size:12px;
@@ -390,12 +390,25 @@ footer .last p {
         font-size:20px;
     }
 }
-@media screen and (max-width:330px){
+@media screen and (max-width:406px){
     main .banner .time p:nth-child(1) {
-        font-size:30px;
+        font-size:60px;
     }
     main .banner .time p:nth-child(2) {
-        font-size:8px;
+        font-size:12px;
+    }
+    main .slider .heading{
+        font-size:20px;
+    }
+}
+@media screen and (max-width:380px){
+    main .banner .time p:nth-child(1) {
+        font-size:50px;
+    }
+}
+@media screen and (max-width:330px){
+    main .banner .time p:nth-child(1) {
+        font-size:45px;
     }
 }
 header .nav-link:hover{
