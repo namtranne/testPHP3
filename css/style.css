@@ -156,7 +156,7 @@ main .text-container .show .right span:nth-child(1){
 main .slider{
     background: rgba(27,39,61,.7);
     padding: 50px;
-    background-image:url("/images/bg.jpg") !important;
+    background-image:url("images/bg.jpg") !important;
     background-size:cover;
     background-position:center;
     padding:50px;
@@ -285,7 +285,7 @@ main .product .row #col:hover .inner{
     }
 }
 footer {
-    background: url("/images/footer-bg.jpg");
+    background: url("images/footer-bg.jpg");
     background-position: center;
     background-size: cover;
     color: #fff;
