@@ -53,7 +53,7 @@ header .navbar-nav .nav-item{
     display:flex;
 }
 main .banner{
-    background: url(/images/banner.gif) !important;
+    background: url("../images/banner.gif") !important;
     background-position: center !important;
     background-size: cover !important;
     max-height: 100vh !important;
