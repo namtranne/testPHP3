@@ -2,7 +2,9 @@ let button=document.querySelectorAll("button");
         for (let i=0; i<button.length; i++){
             button[i].addEventListener("click",function(){
                 button[i].style.borderRadius="20px";
+                button[i].style.color="white";
                 setTimeout(() => {
+                    button[i].style.color="#4a25aa";
                     button[i].style.borderRadius="5px";
                 }, 2000);
             })
